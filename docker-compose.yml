@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  covidvaccineschedulesqueryapi:
+    image: ${DOCKER_REGISTRY-}covidvaccineschedulesqueryapi
+    build:
+      context: .
+      dockerfile: src/Dockerfile
