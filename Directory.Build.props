@@ -1,7 +1,11 @@
 <Project>
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
+    <Version>1.0.0.0</Version>
+    <Authors>Leonardo C. Guilen</Authors>
+    <RepositoryUrl>https://github.com/leoguilen/minimal-api_net6.0_toy-code</RepositoryUrl>
   </PropertyGroup>
+  
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
       <_Parameter1>CovidVaccineSchedulesQueryApi.Infra.IoC</_Parameter1>
