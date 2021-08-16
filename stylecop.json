@@ -5,7 +5,7 @@
       "companyName": "Me"
     },
     "orderingRules": {
-      "usingDirectivesPlacement": "outsideNamespace",
+      "usingDirectivesPlacement": "insideNamespace",
       "elementOrder": [
         "kind",
         "accessibility",

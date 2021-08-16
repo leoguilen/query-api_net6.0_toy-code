@@ -1,4 +1,3 @@
-
 namespace CovidVaccineSchedulesQueryApi.Api;
 public class WeatherForecast
 {
