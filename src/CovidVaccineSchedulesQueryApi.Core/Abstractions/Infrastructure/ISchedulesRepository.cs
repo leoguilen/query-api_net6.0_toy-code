@@ -1,10 +1,10 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
 
-using System.Buffers;
+using CovidVaccineSchedulesQueryApi.Core.Models;
 
 public interface ISchedulesRepository
 {
-    ValueTask<ReadOnlySequence<byte[]>> GetAllAsync(DateOnly startDate, DateOnly endDate);
+    ValueTask<IReadOnlyCollection<CovidVaccineScheduleResponse>> GetAllAsync(DateOnly startDate, DateOnly endDate);
 
-    ValueTask<ReadOnlySequence<byte>> GetByAsync(Guid personId);
+    ValueTask<CovidVaccineScheduleResponse> GetByAsync(Guid personId);
 }

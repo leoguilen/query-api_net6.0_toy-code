@@ -170,6 +170,25 @@ csharp_space_between_square_brackets = false
 # Wrap options
 csharp_preserve_single_line_statements = true
 csharp_preserve_single_line_blocks = true
+dotnet_diagnostic.SA1600.severity=silent
+dotnet_diagnostic.SA1601.severity=silent
+dotnet_diagnostic.SA1602.severity=silent
+dotnet_diagnostic.SA1633.severity=silent
+dotnet_diagnostic.SA1634.severity=silent
+dotnet_diagnostic.SA1635.severity=silent
+
+# CS8618: Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+dotnet_diagnostic.CS8618.severity = none
+dotnet_diagnostic.SA1101.severity=silent
+dotnet_diagnostic.SA1309.severity=silent
+
+# CS8603: Possible null reference return.
+dotnet_diagnostic.CS8603.severity = none
+dotnet_diagnostic.SA1000.severity=silent
+
+# CS8620: Argument cannot be used for parameter due to differences in the nullability of reference types.
+dotnet_diagnostic.CS8620.severity = none
+dotnet_diagnostic.RCS1090.severity=silent
 
 ## Naming conventions
 [*.{cs,vb}]
