@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <CodeAnalysisRuleSet>..\..\.ruleset</CodeAnalysisRuleSet>
     <Nullable>enable</Nullable>
     <UserSecretsId>8c4e9de3-5e20-4448-a51c-ad9587927429</UserSecretsId>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
