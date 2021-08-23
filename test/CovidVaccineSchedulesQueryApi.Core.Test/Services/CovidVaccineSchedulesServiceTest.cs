@@ -41,7 +41,7 @@ public class CovidVaccineSchedulesServiceTest
             .ReturnsAsync(expectedResponse);
         _cacheManager
             .Setup(x => x.AddAsync(expectedCacheKey, expectedResponse, TimeSpan.FromSeconds(_cacheConfig.TimeToExpireInSeconds)))
-            .ReturnsAsync(true);
+            .Returns(ValueTask.CompletedTask);
         var sut = GetService();
 
         // Act
@@ -116,7 +116,7 @@ public class CovidVaccineSchedulesServiceTest
             .ReturnsAsync(expectedResponse);
         _cacheManager
             .Setup(x => x.AddAsync(expectedCacheKey, expectedResponse, TimeSpan.FromSeconds(_cacheConfig.TimeToExpireInSeconds)))
-            .ReturnsAsync(true);
+            .Returns(ValueTask.CompletedTask);
         var sut = GetService();
 
         // Act
@@ -146,7 +146,7 @@ public class CovidVaccineSchedulesServiceTest
             .ReturnsAsync(expectedResponse);
         _cacheManager
             .Setup(x => x.AddAsync(expectedCacheKey, expectedResponse, TimeSpan.FromSeconds(_cacheConfig.TimeToExpireInSeconds)))
-            .ReturnsAsync(true);
+            .Returns(ValueTask.CompletedTask);
         var sut = GetService();
 
         // Act
@@ -233,7 +233,7 @@ public class CovidVaccineSchedulesServiceTest
             .ReturnsAsync(expectedResponse);
         _cacheManager
             .Setup(x => x.AddAsync(expectedCacheKey, expectedResponse, TimeSpan.FromSeconds(_cacheConfig.TimeToExpireInSeconds)))
-            .ReturnsAsync(true);
+            .Returns(ValueTask.CompletedTask);
         var sut = GetService();
 
         // Act

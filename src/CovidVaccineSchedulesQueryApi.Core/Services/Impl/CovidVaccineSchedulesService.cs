@@ -46,7 +46,7 @@ internal class CovidVaccineSchedulesService : ICovidVaccineSchedulesService
             return default;
         }
 
-        _ = await _cacheManager.AddAsync(cacheKey, vaccineSchedule, _expireCacheTime);
+        await _cacheManager.AddAsync(cacheKey, vaccineSchedule, _expireCacheTime);
 
         return vaccineSchedule;
     }
@@ -76,7 +76,7 @@ internal class CovidVaccineSchedulesService : ICovidVaccineSchedulesService
             return default;
         }
 
-        _ = await _cacheManager.AddAsync(cacheKey, listOfVaccineSchedules, _expireCacheTime);
+        await _cacheManager.AddAsync(cacheKey, listOfVaccineSchedules, _expireCacheTime);
 
         return listOfVaccineSchedules;
     }

@@ -2,7 +2,7 @@
 
 public interface IAsyncCacheManager
 {
-    ValueTask<bool> AddAsync<T>(string key, T obj, TimeSpan? expiry = null);
+    ValueTask AddAsync<T>(string key, T obj, TimeSpan? expiry = null);
 
     ValueTask<T> GetAsync<T>(string key);
 
