@@ -12,7 +12,7 @@ internal static class CovidVaccineScheduleResponseFactory
         PersonId = scheduleDocument.PersonId,
         PersonName = scheduleDocument.PersonName,
         PersonDocIdentifier = scheduleDocument.PersonDocIdentifier,
-        VaccineSchedules = (IReadOnlyList<PersonVaccineSchedules>)scheduleDocument
+        VaccineSchedules = scheduleDocument
             .PersonVaccineSchedules
             .Select(sc => new PersonVaccineSchedules()
             {
@@ -23,19 +23,20 @@ internal static class CovidVaccineScheduleResponseFactory
                 ServiceUnit = sc.ServiceUnit,
                 VaccinatorName = sc.VaccinatorName,
                 WasApplied = sc.WasApplied,
-            }),
+            })
+            .ToArray(),
     };
 
     public static IReadOnlyList<CovidVaccineScheduleResponse> CreateFrom(IEnumerable<ScheduleDocument> schedules) =>
         !schedules.Any()
             ? Array.Empty<CovidVaccineScheduleResponse>()
-            : (IReadOnlyList<CovidVaccineScheduleResponse>)schedules
+            : schedules
                 .Select(sc => new CovidVaccineScheduleResponse()
                 {
                     PersonId = sc.PersonId,
                     PersonName = sc.PersonName,
                     PersonDocIdentifier = sc.PersonDocIdentifier,
-                    VaccineSchedules = (IReadOnlyList<PersonVaccineSchedules>)sc.PersonVaccineSchedules
+                    VaccineSchedules = sc.PersonVaccineSchedules
                         .Select(psc => new PersonVaccineSchedules()
                         {
                             DoseNumber = psc.DoseNumber,
@@ -45,6 +46,8 @@ internal static class CovidVaccineScheduleResponseFactory
                             ServiceUnit = psc.ServiceUnit,
                             VaccinatorName = psc.VaccinatorName,
                             WasApplied = psc.WasApplied,
-                        }),
-                });
+                        })
+                        .ToArray(),
+                })
+                .ToArray();
 }

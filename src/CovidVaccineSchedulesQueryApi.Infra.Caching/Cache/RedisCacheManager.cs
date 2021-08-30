@@ -6,15 +6,16 @@ using StackExchange.Redis;
 
 internal class RedisCacheManager : IAsyncCacheManager
 {
-    private readonly IDatabaseAsync _database;
+    private readonly IDatabase _database;
 
-    public RedisCacheManager(IDatabaseAsync database) =>
+    public RedisCacheManager(IDatabase database) =>
         _database = database;
 
-    public async ValueTask AddAsync<T>(string key, T obj, TimeSpan? expiry = null) =>
-        await Task.WhenAll(
-            Task.Run(async () => await _database.HashSetAsync(key, obj.ToHashEntries(), CommandFlags.FireAndForget)),
-            Task.Run(async () => await _database.KeyExpireAsync(key, expiry, CommandFlags.FireAndForget)));
+    public async ValueTask AddAsync<T>(string key, T obj, TimeSpan? expiry = null)
+    {
+        await _database.HashSetAsync(key, obj.ToHashEntries(), CommandFlags.FireAndForget);
+        await _database.KeyExpireAsync(key, expiry, CommandFlags.FireAndForget);
+    }
 
     public async ValueTask<bool> DeleteAsync(string key) =>
         await _database.KeyDeleteAsync(key, CommandFlags.FireAndForget);

@@ -12,12 +12,14 @@ internal static class ServiceCollectionExtension
 {
     public static IServiceCollection AddInfraCaching(this IServiceCollection services) =>
         services
-            .AddScoped(async provider =>
+            .AddScoped(provider =>
             {
-                var redisConnectionString = provider.GetRequiredService<RedisConfiguration>().ConnectionString;
-                return (await ConnectionMultiplexer
-                    .ConnectAsync(redisConnectionString)
-                    .ConfigureAwait(false))
+                var redisConnectionString = provider
+                    .GetRequiredService<RedisConfiguration>()
+                    .ConnectionString;
+
+                return ConnectionMultiplexer
+                    .Connect(redisConnectionString)
                     .GetDatabase();
             })
             .AddScoped<IAsyncCacheManager, RedisCacheManager>();
