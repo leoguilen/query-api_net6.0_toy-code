@@ -2,17 +2,17 @@
 
 public record PersonVaccineSchedules
 {
-    public byte DoseNumber { get; internal init; }
+    public byte DoseNumber { get; init; }
 
-    public string ServiceUnit { get; internal init; }
+    public string ServiceUnit { get; init; }
 
-    public DateTimeOffset LocalDate { get; internal init; }
+    public DateTimeOffset LocalDate { get; init; }
 
-    public string LotIdentifier { get; internal init; }
+    public string LotIdentifier { get; init; }
 
-    public string ManufacturerName { get; internal init; }
+    public string ManufacturerName { get; init; }
 
-    public string VaccinatorName { get; internal init; }
+    public string VaccinatorName { get; init; }
 
-    public bool WasApplied { get; internal init; }
+    public bool WasApplied { get; init; }
 }
