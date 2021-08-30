@@ -51,12 +51,12 @@ internal class CovidVaccineSchedulesService : ICovidVaccineSchedulesService
         return vaccineSchedule;
     }
 
-    public async ValueTask<IReadOnlyCollection<CovidVaccineScheduleResponse>> GetSchedulesAsync(DateOnly startDate, DateOnly endDate)
+    public async ValueTask<IReadOnlyList<CovidVaccineScheduleResponse>> GetSchedulesAsync(DateOnly startDate, DateOnly endDate)
     {
         var cacheKey = $"key-{startDate:yyyyMMdd}-{endDate:yyyyMMdd}";
 
         var cachedListOfVaccineSchedules = await _cacheManager
-            .GetAsync<IReadOnlyCollection<CovidVaccineScheduleResponse>>(cacheKey);
+            .GetAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(cacheKey);
 
         if (cachedListOfVaccineSchedules is not null)
         {

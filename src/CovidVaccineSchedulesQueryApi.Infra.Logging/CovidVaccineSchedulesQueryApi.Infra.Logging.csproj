@@ -21,4 +21,8 @@
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CovidVaccineSchedulesQueryApi.Core\CovidVaccineSchedulesQueryApi.Core.csproj" />
+  </ItemGroup>
 </Project>

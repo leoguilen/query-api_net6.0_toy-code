@@ -2,11 +2,11 @@
 
 public record CovidVaccineScheduleResponse
 {
-    public Guid PersonId { get; internal init; }
+    public Guid PersonId { get; init; }
 
-    public string PersonName { get; internal init; }
+    public string PersonName { get; init; }
 
-    public string PersonDocIdentifier { get; internal init; }
+    public string PersonDocIdentifier { get; init; }
 
-    public IReadOnlyCollection<PersonVaccineSchedules> VaccineSchedules { get; internal init; }
+    public IReadOnlyList<PersonVaccineSchedules> VaccineSchedules { get; init; }
 }

@@ -38,4 +38,8 @@
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CovidVaccineSchedulesQueryApi.Infra.Logging\CovidVaccineSchedulesQueryApi.Infra.Logging.csproj" />
+  </ItemGroup>
 </Project>

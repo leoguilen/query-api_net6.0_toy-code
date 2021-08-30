@@ -4,7 +4,7 @@ using CovidVaccineSchedulesQueryApi.Core.Models;
 
 public interface ISchedulesRepository
 {
-    ValueTask<IReadOnlyCollection<CovidVaccineScheduleResponse>> GetAllAsync(DateOnly startDate, DateOnly endDate);
+    ValueTask<IReadOnlyList<CovidVaccineScheduleResponse>> GetAllAsync(DateOnly startDate, DateOnly endDate);
 
     ValueTask<CovidVaccineScheduleResponse> GetByAsync(Guid personId);
 }

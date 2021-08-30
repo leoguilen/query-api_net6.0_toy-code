@@ -129,7 +129,7 @@ public class CovidVaccineSchedulesServiceTest
 
     [Theory]
     [AutoData]
-    public async Task GetSchedulesAsync_GivenNoCached_ThenReturnListOfVaccineSchedulesInformationsAndSetObjectsInCache(DateTime startDate, IReadOnlyCollection<CovidVaccineScheduleResponse> expectedResponse)
+    public async Task GetSchedulesAsync_GivenNoCached_ThenReturnListOfVaccineSchedulesInformationsAndSetObjectsInCache(DateTime startDate, IReadOnlyList<CovidVaccineScheduleResponse> expectedResponse)
     {
         // Arrange
         var requestParams = new
@@ -139,8 +139,8 @@ public class CovidVaccineSchedulesServiceTest
         };
         var expectedCacheKey = $"key-{requestParams.StartDate:yyyyMMdd}-{requestParams.EndDate:yyyyMMdd}";
         _cacheManager
-            .Setup(x => x.GetAsync<IReadOnlyCollection<CovidVaccineScheduleResponse>>(expectedCacheKey))
-            .ReturnsAsync(null as IReadOnlyCollection<CovidVaccineScheduleResponse>);
+            .Setup(x => x.GetAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(expectedCacheKey))
+            .ReturnsAsync(null as IReadOnlyList<CovidVaccineScheduleResponse>);
         _schedulesRepository
             .Setup(x => x.GetAllAsync(requestParams.StartDate, requestParams.EndDate))
             .ReturnsAsync(expectedResponse);
@@ -169,11 +169,11 @@ public class CovidVaccineSchedulesServiceTest
         };
         var expectedCacheKey = $"key-{requestParams.StartDate:yyyyMMdd}-{requestParams.EndDate:yyyyMMdd}";
         _cacheManager
-            .Setup(x => x.GetAsync<IReadOnlyCollection<CovidVaccineScheduleResponse>>(expectedCacheKey))
-            .ReturnsAsync(null as IReadOnlyCollection<CovidVaccineScheduleResponse>);
+            .Setup(x => x.GetAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(expectedCacheKey))
+            .ReturnsAsync(null as IReadOnlyList<CovidVaccineScheduleResponse>);
         _schedulesRepository
             .Setup(x => x.GetAllAsync(requestParams.StartDate, requestParams.EndDate))
-            .ReturnsAsync(null as IReadOnlyCollection<CovidVaccineScheduleResponse>);
+            .ReturnsAsync(null as IReadOnlyList<CovidVaccineScheduleResponse>);
         var sut = GetService();
 
         // Act
@@ -186,7 +186,7 @@ public class CovidVaccineSchedulesServiceTest
 
     [Theory]
     [AutoData]
-    public async Task GetSchedulesAsync_GivenContainsCachedResponse_ThenReturnListOfVaccineSchedulesInformationsInCache(DateTime startDate, IReadOnlyCollection<CovidVaccineScheduleResponse> expectedResponse)
+    public async Task GetSchedulesAsync_GivenContainsCachedResponse_ThenReturnListOfVaccineSchedulesInformationsInCache(DateTime startDate, IReadOnlyList<CovidVaccineScheduleResponse> expectedResponse)
     {
         // Arrange
         var requestParams = new
@@ -196,7 +196,7 @@ public class CovidVaccineSchedulesServiceTest
         };
         var expectedCacheKey = $"key-{requestParams.StartDate:yyyyMMdd}-{requestParams.EndDate:yyyyMMdd}";
         _cacheManager
-            .Setup(x => x.GetAsync<IReadOnlyCollection<CovidVaccineScheduleResponse>>(expectedCacheKey))
+            .Setup(x => x.GetAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(expectedCacheKey))
             .ReturnsAsync(expectedResponse);
         _cacheManager
             .Setup(x => x.KeyTimeToLiveAsync(expectedCacheKey))
@@ -213,7 +213,7 @@ public class CovidVaccineSchedulesServiceTest
 
     [Theory]
     [AutoData]
-    public async Task GetSchedulesAsync_GivenCachedResponseIsExpired_ThenGetListOfVaccineSchedulesInformationsAndSetNewInCache(DateTime startDate, IReadOnlyCollection<CovidVaccineScheduleResponse> expectedResponse)
+    public async Task GetSchedulesAsync_GivenCachedResponseIsExpired_ThenGetListOfVaccineSchedulesInformationsAndSetNewInCache(DateTime startDate, IReadOnlyList<CovidVaccineScheduleResponse> expectedResponse)
     {
         // Arrange
         var requestParams = new
@@ -223,7 +223,7 @@ public class CovidVaccineSchedulesServiceTest
         };
         var expectedCacheKey = $"key-{requestParams.StartDate:yyyyMMdd}-{requestParams.EndDate:yyyyMMdd}";
         _cacheManager
-            .Setup(x => x.GetAsync<IReadOnlyCollection<CovidVaccineScheduleResponse>>(expectedCacheKey))
+            .Setup(x => x.GetAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(expectedCacheKey))
             .ReturnsAsync(expectedResponse);
         _cacheManager
             .Setup(x => x.KeyTimeToLiveAsync(expectedCacheKey))

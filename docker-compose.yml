@@ -6,3 +6,17 @@ services:
     build:
       context: .
       dockerfile: src/Dockerfile
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image: mongo
+
+  redis:
+    image: redis
+
+  redisinsight:
+    image: redislabs/redisinsight
+    depends_on:
+      - redis
