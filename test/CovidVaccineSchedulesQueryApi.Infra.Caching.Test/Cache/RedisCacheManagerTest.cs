@@ -12,7 +12,7 @@ using Xunit;
 [Trait("Unit", nameof(RedisCacheManager))]
 public class RedisCacheManagerTest
 {
-    private readonly Mock<IDatabaseAsync> _database;
+    private readonly Mock<IDatabase> _database;
 
     public RedisCacheManagerTest() =>
         _database = new(MockBehavior.Strict);

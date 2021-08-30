@@ -10,6 +10,7 @@ internal record ScheduleDocument
     public ObjectId Id { get; internal init; }
 
     [BsonElement("PERSON_UUID")]
+    [BsonRepresentation(BsonType.String)]
     public Guid PersonId { get; internal init; }
 
     [BsonElement("PERSON_NAME")]

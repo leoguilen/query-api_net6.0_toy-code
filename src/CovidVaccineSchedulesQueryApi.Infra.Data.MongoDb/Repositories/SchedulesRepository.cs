@@ -34,12 +34,13 @@ internal class SchedulesRepository : ISchedulesRepository
 
     public async ValueTask<CovidVaccineScheduleResponse> GetByAsync(Guid personId)
     {
-        var vaccineSchedule = await _schedulesCollection
+        var vaccineSchedule = await (await _schedulesCollection
             .FindAsync(Builders<ScheduleDocument>
                 .Filter
-                .EqCaseInsensitive("PERSON_UUID", personId));
+                .EqCaseInsensitive("PERSON_UUID", personId)))
+                .FirstOrDefaultAsync();
 
         return CovidVaccineScheduleResponseFactory
-            .CreateFrom(vaccineSchedule.Current.GetEnumerator().Current);
+            .CreateFrom(vaccineSchedule);
     }
 }

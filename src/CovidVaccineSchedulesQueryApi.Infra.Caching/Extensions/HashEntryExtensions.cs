@@ -19,7 +19,10 @@ internal static class HashEntryExtensions
 
         foreach (var property in properties)
         {
-            var entry = Array.Find(hashEntries, g => g.Name.ToString().Equals(property.Name, StringComparison.Ordinal));
+            var entry = Array
+                .Find(hashEntries, g => g.Name.ToString()
+                .Equals(property.Name, StringComparison.Ordinal));
+
             if (entry.Equals(default))
             {
                 continue;

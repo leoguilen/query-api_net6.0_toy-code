@@ -1,20 +1,37 @@
+using CovidVaccineSchedulesQueryApi.Api.Configurations;
+using CovidVaccineSchedulesQueryApi.Api.Extensions;
+using CovidVaccineSchedulesQueryApi.Infra.IoC.DependencyInjection;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
+builder.Services
+    .AddApi()
+    .AddIoC(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (builder.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
-app.UseAuthorization();
-
+app.ConfigureSwagger(builder.Configuration, provider);
+app.UseRouting();
 app.MapControllers();
+app.MapHealthChecks("/healthcheck", new HealthCheckOptions
+{
+    ResultStatusCodes =
+    {
+        [HealthStatus.Healthy] = StatusCodes.Status200OK,
+        [HealthStatus.Degraded] = StatusCodes.Status200OK,
+        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable,
+    },
+    AllowCachingResponses = false,
+});
 
-app.Run();
+await app.RunAsync();
