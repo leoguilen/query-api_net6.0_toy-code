@@ -1,13 +1,6 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Api.Extensions;
 
-using System.Reflection;
-using CovidVaccineSchedulesQueryApi.Api.Configurations;
-using CovidVaccineSchedulesQueryApi.Api.Filters;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Swashbuckle.AspNetCore.Filters;
-using Swashbuckle.AspNetCore.SwaggerGen;
-
+[ExcludeFromCodeCoverage]
 internal static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddApi(this IServiceCollection services) =>

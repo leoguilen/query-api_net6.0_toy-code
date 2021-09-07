@@ -1,9 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Api.Filters;
 
-using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-
 internal class ExceptionFilter : IExceptionFilter
 {
     private readonly ILogWriter _logWriter;

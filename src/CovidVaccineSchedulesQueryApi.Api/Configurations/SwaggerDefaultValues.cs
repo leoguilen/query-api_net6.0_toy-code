@@ -1,11 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Api.Configurations;
 
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-
 [ExcludeFromCodeCoverage]
 internal class SwaggerDefaultValues : IOperationFilter
 {

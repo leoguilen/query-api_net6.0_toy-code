@@ -1,9 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Api.Filters;
 
-using CovidVaccineSchedulesQueryApi.Api.Constants;
-using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Filters;
-
 internal class ContextFilter : IActionFilter
 {
     private readonly ILogWriter _logWriter;
