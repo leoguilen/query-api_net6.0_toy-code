@@ -1,11 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Core.Extensions;
 
-using System.Diagnostics.CodeAnalysis;
-using CovidVaccineSchedulesQueryApi.Core.Configurations;
-using CovidVaccineSchedulesQueryApi.Core.Services;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
 [ExcludeFromCodeCoverage]
 internal static class ServiceCollectionExtension
 {

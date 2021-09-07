@@ -1,12 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Extensions;
 
-using System.Diagnostics.CodeAnalysis;
-using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
-using CovidVaccineSchedulesQueryApi.Core.Configurations;
-using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Repositories;
-using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
-
 [ExcludeFromCodeCoverage]
 internal static class ServiceCollectionExtension
 {

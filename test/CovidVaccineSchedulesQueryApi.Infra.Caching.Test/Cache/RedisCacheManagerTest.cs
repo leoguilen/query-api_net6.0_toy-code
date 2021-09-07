@@ -1,14 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Caching.Test.Cache;
 
-using System.Text.Json;
-using AutoFixture.Xunit2;
-using CovidVaccineSchedulesQueryApi.Infra.Caching.Cache;
-using CovidVaccineSchedulesQueryApi.Infra.Caching.Test.Models;
-using FluentAssertions;
-using Moq;
-using StackExchange.Redis;
-using Xunit;
-
 [Trait("Unit", nameof(RedisCacheManager))]
 public class RedisCacheManagerTest
 {

@@ -1,9 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Core.Services;
 
-using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
-using CovidVaccineSchedulesQueryApi.Core.Configurations;
-using CovidVaccineSchedulesQueryApi.Core.Models;
-
 internal class CovidVaccineSchedulesService : ICovidVaccineSchedulesService
 {
     private readonly ISchedulesRepository _schedulesRepository;
@@ -26,63 +22,65 @@ internal class CovidVaccineSchedulesService : ICovidVaccineSchedulesService
     {
         var cacheKey = $"key-{personId}";
 
-        var cachedVaccineSchedule = await _cacheManager
-            .GetAsync<CovidVaccineScheduleResponse>(cacheKey);
-
-        if (cachedVaccineSchedule is not null)
+        var cacheValue = await GetCachedValueAsync<CovidVaccineScheduleResponse>(cacheKey);
+        if (cacheValue is not null)
         {
-            var remainingCacheTime = await _cacheManager
-                .KeyTimeToLiveAsync(cacheKey);
-
-            if (remainingCacheTime.HasValue
-                && remainingCacheTime >= _renewCacheTime)
-            {
-                return cachedVaccineSchedule;
-            }
+            return cacheValue;
         }
 
         var vaccineSchedule = await _schedulesRepository
             .GetByAsync(personId);
-        if (vaccineSchedule is null)
-        {
-            return default;
-        }
 
-        await _cacheManager
-            .AddAsync(cacheKey, vaccineSchedule, _expireCacheTime);
-
-        return vaccineSchedule;
+        return await AddToCacheAndReturnAsync(cacheKey, vaccineSchedule);
     }
 
     public async ValueTask<IReadOnlyList<CovidVaccineScheduleResponse>> GetSchedulesAsync(DateTime startDate, DateTime endDate)
     {
         var cacheKey = $"key-{startDate:yyyyMMdd}-{endDate:yyyyMMdd}";
 
-        var cachedListOfVaccineSchedules = await _cacheManager
-            .GetListAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(cacheKey);
-
-        if (cachedListOfVaccineSchedules is not null)
+        var cacheValue = await GetCachedValueAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(cacheKey);
+        if (cacheValue is not null)
         {
-            var remainingCacheTime = await _cacheManager
-                .KeyTimeToLiveAsync(cacheKey);
-
-            if (remainingCacheTime.HasValue
-                && remainingCacheTime >= _renewCacheTime)
-            {
-                return cachedListOfVaccineSchedules;
-            }
+            return cacheValue;
         }
 
         var listOfVaccineSchedules = await _schedulesRepository
             .GetAllAsync(startDate, endDate);
-        if (listOfVaccineSchedules is null)
+
+        return await AddToCacheAndReturnAsync(cacheKey, listOfVaccineSchedules);
+    }
+
+    private async ValueTask<T> GetCachedValueAsync<T>(string cacheKey)
+    {
+        var cachedValue = typeof(T).IsIEnumerableOf()
+            ? await _cacheManager
+                .GetListAsync<T>(cacheKey)
+            : await _cacheManager
+                .GetAsync<T>(cacheKey);
+
+        if (cachedValue is null)
         {
             return default;
         }
 
-        await _cacheManager
-            .AddAsync(cacheKey, listOfVaccineSchedules, _expireCacheTime);
+        var remainingCacheTime = await _cacheManager
+                .KeyTimeToLiveAsync(cacheKey);
 
-        return listOfVaccineSchedules;
+        return (remainingCacheTime.HasValue
+            && remainingCacheTime >= _renewCacheTime)
+            ? cachedValue
+            : default;
+    }
+
+    private async ValueTask<T> AddToCacheAndReturnAsync<T>(string cacheKey, T value)
+    {
+        if (value is not null)
+        {
+            await _cacheManager
+                .AddAsync(cacheKey, value, _expireCacheTime);
+            return value;
+        }
+
+        return default;
     }
 }

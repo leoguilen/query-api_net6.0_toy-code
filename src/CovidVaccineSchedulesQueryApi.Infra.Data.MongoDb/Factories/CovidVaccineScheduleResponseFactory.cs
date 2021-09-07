@@ -1,10 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Factories;
 
-using System;
-using System.Linq;
-using CovidVaccineSchedulesQueryApi.Core.Models;
-using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Documents;
-
 internal static class CovidVaccineScheduleResponseFactory
 {
     public static CovidVaccineScheduleResponse CreateFrom(ScheduleDocument scheduleDocument) =>

@@ -1,7 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
 
-using System.Runtime.CompilerServices;
-
 public interface ILogWriter : IDisposable
 {
     void SetCorrelationId(Guid correlationId);
