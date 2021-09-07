@@ -2,9 +2,11 @@
 
 public interface IAsyncCacheManager
 {
-    ValueTask AddAsync<T>(string key, T obj, TimeSpan? expiry = null);
+    ValueTask AddAsync<T>(string key, T genericObject, TimeSpan? expiry = null);
 
     ValueTask<T> GetAsync<T>(string key);
+
+    ValueTask<T> GetListAsync<T>(string key);
 
     ValueTask<bool> DeleteAsync(string key);
 

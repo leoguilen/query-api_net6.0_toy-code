@@ -21,15 +21,18 @@ internal class SchedulesRepository : ISchedulesRepository
             .GetCollection<ScheduleDocument>(CollectionName);
     }
 
-    public async ValueTask<IReadOnlyList<CovidVaccineScheduleResponse>> GetAllAsync(DateOnly startDate, DateOnly endDate)
+    public async ValueTask<IReadOnlyList<CovidVaccineScheduleResponse>> GetAllAsync(DateTime startDate, DateTime endDate)
     {
-        var vaccineSchedules = await _schedulesCollection
-            .FindAsync(Builders<ScheduleDocument>
-                .Filter
-                .Between("PERSON_VACCINE_SCHEDULES.LOCAL_DATE", startDate, endDate));
+        var filterDefinition = endDate == DateTime.MinValue
+            ? Builders<ScheduleDocument>.Filter.Empty
+            : Builders<ScheduleDocument>.Filter.Between("PERSON_VACCINE_SCHEDULES.LOCAL_DATE", startDate, endDate);
+
+        var vaccineSchedules = await (await _schedulesCollection
+            .FindAsync(filterDefinition))
+            .ToListAsync();
 
         return CovidVaccineScheduleResponseFactory
-            .CreateFrom(vaccineSchedules.Current);
+            .CreateFrom(vaccineSchedules);
     }
 
     public async ValueTask<CovidVaccineScheduleResponse> GetByAsync(Guid personId)

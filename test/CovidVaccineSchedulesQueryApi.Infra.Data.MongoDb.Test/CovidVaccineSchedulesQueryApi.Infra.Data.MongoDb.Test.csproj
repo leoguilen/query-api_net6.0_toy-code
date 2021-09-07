@@ -38,4 +38,8 @@
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb\CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.csproj" />
+  </ItemGroup>
 </Project>

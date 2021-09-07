@@ -19,7 +19,7 @@ public class SchedulesController : ControllerBase
     /// <summary>
     /// Realiza a busca do agendamento de vacina contra covid de uma pessoa.
     /// </summary>
-    /// <param name="personId">Identificador único de uma pessoa.</param>
+    /// <param name="personId" example="fa67e73b-9bc4-472b-863d-96ac70314338">Identificador único de uma pessoa.</param>
     /// <response code="200">OK.</response>
     /// <response code="404">Not Found.</response>
     /// <response code="500">Internal Server Error.</response>
@@ -43,8 +43,8 @@ public class SchedulesController : ControllerBase
     /// <summary>
     /// Realiza a busca dos agendamentos de vacina contra covid dentro de um intervalo de tempo.
     /// </summary>
-    /// <param name="startDate">Data inicial.</param>
-    /// <param name="endDate">Data final.</param>
+    /// <param name="startDate" example="2021-03-25">Data inicial.</param>
+    /// <param name="endDate" example="2021-03-26">Data final.</param>
     /// <response code="200">OK.</response>
     /// <response code="404">Not Found.</response>
     /// <response code="412">Precondition Failed.</response>
@@ -57,7 +57,7 @@ public class SchedulesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status412PreconditionFailed)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
-    public async Task<IActionResult> GetAllVaccineSchedulesAsync([FromQuery] DateOnly startDate, [FromQuery] DateOnly endDate)
+    public async Task<IActionResult> GetAllVaccineSchedulesAsync([FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
     {
         var scheduleResponse = await _vaccineSchedulesService
             .GetSchedulesAsync(startDate, endDate);
