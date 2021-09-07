@@ -1,8 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Api.Configurations;
 
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-
 [ExcludeFromCodeCoverage]
 internal static class SwaggerExtensions
 {

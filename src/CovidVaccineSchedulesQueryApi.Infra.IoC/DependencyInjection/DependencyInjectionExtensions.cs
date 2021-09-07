@@ -12,5 +12,5 @@ public static class DependencyInjectionExtensions
             .AddInfraData()
             .AddLogging()
             .AddHealthChecks()
-                .AddChecks();
+                .AddChecks(configuration);
 }

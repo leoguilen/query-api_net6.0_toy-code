@@ -1,9 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Api.Filters;
 
-using System.Diagnostics;
-using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Filters;
-
 internal class ControllersFilter : IActionFilter
 {
     private readonly ILogWriter _logWriter;

@@ -16,7 +16,8 @@ internal class SchedulesRepository : ISchedulesRepository
 
     public async ValueTask<IReadOnlyList<CovidVaccineScheduleResponse>> GetAllAsync(DateTime startDate, DateTime endDate)
     {
-        var filterDefinition = endDate == DateTime.MinValue
+        var filterDefinition = startDate == DateTime.MinValue
+                               || endDate == DateTime.MinValue
             ? Builders<ScheduleDocument>.Filter.Empty
             : Builders<ScheduleDocument>.Filter.Between("PERSON_VACCINE_SCHEDULES.LOCAL_DATE", startDate, endDate);
 
