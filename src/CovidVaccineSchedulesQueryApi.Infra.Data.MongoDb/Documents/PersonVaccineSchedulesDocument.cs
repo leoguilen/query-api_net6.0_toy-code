@@ -1,5 +1,6 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Documents;
 
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 internal record PersonVaccineSchedulesDocument
@@ -11,7 +12,7 @@ internal record PersonVaccineSchedulesDocument
     public string ServiceUnit { get; internal init; }
 
     [BsonElement("LOCAL_DATE")]
-    public DateTimeOffset LocalDate { get; internal init; }
+    public DateTime LocalDate { get; internal init; }
 
     [BsonElement("LOT_IDENTIFIER")]
     public string LotIdentifier { get; internal init; }

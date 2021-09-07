@@ -7,28 +7,31 @@ using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Documents;
 
 internal static class CovidVaccineScheduleResponseFactory
 {
-    public static CovidVaccineScheduleResponse CreateFrom(ScheduleDocument scheduleDocument) => new()
-    {
-        PersonId = scheduleDocument.PersonId,
-        PersonName = scheduleDocument.PersonName,
-        PersonDocIdentifier = scheduleDocument.PersonDocIdentifier,
-        VaccineSchedules = scheduleDocument
-            .PersonVaccineSchedules
-            .Select(sc => new PersonVaccineSchedules()
+    public static CovidVaccineScheduleResponse CreateFrom(ScheduleDocument scheduleDocument) =>
+        scheduleDocument is null
+            ? default
+            : new()
             {
-                DoseNumber = sc.DoseNumber,
-                LocalDate = sc.LocalDate,
-                LotIdentifier = sc.LotIdentifier,
-                ManufacturerName = sc.ManufacturerName,
-                ServiceUnit = sc.ServiceUnit,
-                VaccinatorName = sc.VaccinatorName,
-                WasApplied = sc.WasApplied,
-            })
-            .ToArray(),
-    };
+                PersonId = scheduleDocument.PersonId,
+                PersonName = scheduleDocument.PersonName,
+                PersonDocIdentifier = scheduleDocument.PersonDocIdentifier,
+                VaccineSchedules = scheduleDocument
+                    .PersonVaccineSchedules
+                    .Select(sc => new PersonVaccineSchedules()
+                    {
+                        DoseNumber = sc.DoseNumber,
+                        LocalDate = sc.LocalDate,
+                        LotIdentifier = sc.LotIdentifier,
+                        ManufacturerName = sc.ManufacturerName,
+                        ServiceUnit = sc.ServiceUnit,
+                        VaccinatorName = sc.VaccinatorName,
+                        WasApplied = sc.WasApplied,
+                    })
+                    .ToArray(),
+            };
 
     public static IReadOnlyList<CovidVaccineScheduleResponse> CreateFrom(IEnumerable<ScheduleDocument> schedules) =>
-        !schedules.Any()
+        schedules?.Any() != true
             ? Array.Empty<CovidVaccineScheduleResponse>()
             : schedules
                 .Select(sc => new CovidVaccineScheduleResponse()

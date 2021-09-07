@@ -1,4 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Core.Services;
+
 using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
 using CovidVaccineSchedulesQueryApi.Core.Configurations;
 using CovidVaccineSchedulesQueryApi.Core.Models;
@@ -40,23 +41,25 @@ internal class CovidVaccineSchedulesService : ICovidVaccineSchedulesService
             }
         }
 
-        var vaccineSchedule = await _schedulesRepository.GetByAsync(personId);
+        var vaccineSchedule = await _schedulesRepository
+            .GetByAsync(personId);
         if (vaccineSchedule is null)
         {
             return default;
         }
 
-        await _cacheManager.AddAsync(cacheKey, vaccineSchedule, _expireCacheTime);
+        await _cacheManager
+            .AddAsync(cacheKey, vaccineSchedule, _expireCacheTime);
 
         return vaccineSchedule;
     }
 
-    public async ValueTask<IReadOnlyList<CovidVaccineScheduleResponse>> GetSchedulesAsync(DateOnly startDate, DateOnly endDate)
+    public async ValueTask<IReadOnlyList<CovidVaccineScheduleResponse>> GetSchedulesAsync(DateTime startDate, DateTime endDate)
     {
         var cacheKey = $"key-{startDate:yyyyMMdd}-{endDate:yyyyMMdd}";
 
         var cachedListOfVaccineSchedules = await _cacheManager
-            .GetAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(cacheKey);
+            .GetListAsync<IReadOnlyList<CovidVaccineScheduleResponse>>(cacheKey);
 
         if (cachedListOfVaccineSchedules is not null)
         {
@@ -70,13 +73,15 @@ internal class CovidVaccineSchedulesService : ICovidVaccineSchedulesService
             }
         }
 
-        var listOfVaccineSchedules = await _schedulesRepository.GetAllAsync(startDate, endDate);
+        var listOfVaccineSchedules = await _schedulesRepository
+            .GetAllAsync(startDate, endDate);
         if (listOfVaccineSchedules is null)
         {
             return default;
         }
 
-        await _cacheManager.AddAsync(cacheKey, listOfVaccineSchedules, _expireCacheTime);
+        await _cacheManager
+            .AddAsync(cacheKey, listOfVaccineSchedules, _expireCacheTime);
 
         return listOfVaccineSchedules;
     }
