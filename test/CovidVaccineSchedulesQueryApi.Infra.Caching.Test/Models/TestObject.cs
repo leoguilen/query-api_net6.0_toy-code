@@ -1,7 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Caching.Test.Models;
 
-using System.Text.Json;
-
 public record TestObject
 {
     public string Name { get; init; }

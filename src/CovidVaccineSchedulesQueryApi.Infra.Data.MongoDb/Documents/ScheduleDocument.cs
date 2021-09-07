@@ -1,8 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Documents;
 
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
 internal record ScheduleDocument
 {
     [BsonId]

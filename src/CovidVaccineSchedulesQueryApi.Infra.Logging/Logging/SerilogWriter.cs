@@ -1,13 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Logging.Logging;
 
-using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
-using CovidVaccineSchedulesQueryApi.Infra.Logging.Models;
-using Serilog;
-using Serilog.Events;
-
 internal class SerilogWriter : ILogWriter
 {
     private ILogger _logger;

@@ -1,8 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Caching.Extensions;
 
-using System.Text.Json;
-using StackExchange.Redis;
-
 internal static class RedisValueExtensions
 {
     public static async ValueTask<T> As<T>(this RedisValue value)

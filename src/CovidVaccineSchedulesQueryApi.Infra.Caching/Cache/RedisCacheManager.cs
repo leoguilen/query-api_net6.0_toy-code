@@ -1,9 +1,4 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Caching.Cache;
-using System.IO;
-using System.Text.Json;
-using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
-using CovidVaccineSchedulesQueryApi.Infra.Caching.Extensions;
-using StackExchange.Redis;
 
 internal class RedisCacheManager : IAsyncCacheManager
 {

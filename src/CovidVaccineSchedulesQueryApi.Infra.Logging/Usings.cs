@@ -1,0 +1,9 @@
+﻿global using System.Diagnostics.CodeAnalysis;
+global using System.Reflection;
+global using System.Runtime.CompilerServices;
+global using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
+global using CovidVaccineSchedulesQueryApi.Infra.Logging.Logging;
+global using CovidVaccineSchedulesQueryApi.Infra.Logging.Models;
+global using Microsoft.Extensions.DependencyInjection;
+global using Serilog;
+global using Serilog.Events;

@@ -1,9 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Extensions;
 
-using System.Diagnostics.CodeAnalysis;
-using MongoDB.Bson;
-using MongoDB.Driver;
-
 [ExcludeFromCodeCoverage]
 internal static class FilterDefinitionExtensions
 {

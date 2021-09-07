@@ -6,10 +6,12 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8754AB0A-48FE-4A1A-8B48-2ED397DB7479}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.ruleset = .ruleset
 		Directory.Build.props = Directory.Build.props
 		docker-compose.override.yml = docker-compose.override.yml
 		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
+		global.json = global.json
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
@@ -41,9 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidVaccineSchedulesQueryA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidVaccineSchedulesQueryApi.IntegrationTest", "test\CovidVaccineSchedulesQueryApi.IntegrationTest\CovidVaccineSchedulesQueryApi.IntegrationTest.csproj", "{DB04F013-F2F0-4C1F-8401-1BB86AD6914B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidVaccineSchedulesQueryApi.Infra.Caching", "src\CovidVaccineSchedulesQueryApi.Infra.Caching\CovidVaccineSchedulesQueryApi.Infra.Caching.csproj", "{1BD17C4F-E9D8-4749-8C9A-8B6F099A7CC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidVaccineSchedulesQueryApi.Infra.Caching", "src\CovidVaccineSchedulesQueryApi.Infra.Caching\CovidVaccineSchedulesQueryApi.Infra.Caching.csproj", "{1BD17C4F-E9D8-4749-8C9A-8B6F099A7CC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidVaccineSchedulesQueryApi.Infra.Caching.Test", "test\CovidVaccineSchedulesQueryApi.Infra.Caching.Test\CovidVaccineSchedulesQueryApi.Infra.Caching.Test.csproj", "{64801C7B-1D41-4337-9E13-6A4567B9415B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidVaccineSchedulesQueryApi.Infra.Caching.Test", "test\CovidVaccineSchedulesQueryApi.Infra.Caching.Test\CovidVaccineSchedulesQueryApi.Infra.Caching.Test.csproj", "{64801C7B-1D41-4337-9E13-6A4567B9415B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,12 +1,5 @@
 ﻿namespace CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Repositories;
 
-using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
-using CovidVaccineSchedulesQueryApi.Core.Models;
-using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Documents;
-using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Extensions;
-using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Factories;
-using MongoDB.Driver;
-
 internal class SchedulesRepository : ISchedulesRepository
 {
     private const string CollectionName = "PERSON_VACCINE_SCHEDULES";
