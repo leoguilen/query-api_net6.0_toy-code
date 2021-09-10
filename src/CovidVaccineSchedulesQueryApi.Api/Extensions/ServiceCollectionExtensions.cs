@@ -26,6 +26,7 @@ internal static class ServiceCollectionExtensions
             {
                 opt.GroupNameFormat = "'v'VVV";
                 opt.SubstituteApiVersionInUrl = true;
+                opt.AssumeDefaultVersionWhenUnspecified = true;
             });
 
     private static IServiceCollection ConfigSwagger(this IServiceCollection services) =>
