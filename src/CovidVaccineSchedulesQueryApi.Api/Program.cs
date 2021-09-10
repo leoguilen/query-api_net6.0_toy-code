@@ -1,9 +1,15 @@
-var builder = WebApplication.CreateBuilder();
-builder.Services
-    .AddApi()
-    .AddIoC(builder.Configuration);
+namespace CovidVaccineSchedulesQueryApi.Api;
 
-var app = builder.Build();
-app.UseApi(builder.Configuration);
+[ExcludeFromCodeCoverage]
+public static class Program
+{
+    public static async Task Main(string[] args) =>
+        await CreateHostBuilder(args)
+            .Build()
+            .RunAsync();
 
-await app.RunAsync();
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.UseStartup<Startup>());
+}
