@@ -1,0 +1,12 @@
+﻿global using System.Diagnostics.CodeAnalysis;
+global using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
+global using CovidVaccineSchedulesQueryApi.Core.Configurations;
+global using CovidVaccineSchedulesQueryApi.Core.Models;
+global using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Documents;
+global using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Extensions;
+global using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Factories;
+global using CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.Repositories;
+global using Microsoft.Extensions.DependencyInjection;
+global using MongoDB.Bson;
+global using MongoDB.Bson.Serialization.Attributes;
+global using MongoDB.Driver;

@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  covidvaccineschedulesqueryapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  mongo:
+    environment:
+      - MONGO_INITDB_DATABASE=VACCINE_SCHEDULES
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: "echo 'db.runCommand(\"ping\").ok'"
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+  redis:
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  redisinsight:
+    ports:
+      - "8881:8001"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  mongo-data:
+    external: false
+  redis-data:
+    external: false

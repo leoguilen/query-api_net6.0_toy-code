@@ -1,0 +1,11 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Diagnostics.CodeAnalysis;
+global using System.Runtime.CompilerServices;
+global using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
+global using CovidVaccineSchedulesQueryApi.Core.Configurations;
+global using CovidVaccineSchedulesQueryApi.Core.Extensions;
+global using CovidVaccineSchedulesQueryApi.Core.Models;
+global using CovidVaccineSchedulesQueryApi.Core.Services;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;

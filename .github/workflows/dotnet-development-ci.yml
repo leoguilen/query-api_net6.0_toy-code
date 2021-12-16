@@ -1,0 +1,24 @@
+name: .NET Development CI
+
+on:
+  push:
+    branches: [develop, feature/*]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.100-preview.7.21379.14
+      - name: Restore dependencies
+        run: dotnet restore "CovidVaccineSchedulesQueryApi.sln" --no-cache
+      - name: Build
+        run: dotnet build -c Release
+      - name: Test
+        run: dotnet test --no-build

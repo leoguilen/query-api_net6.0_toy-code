@@ -1,0 +1,10 @@
+﻿global using System.Text.Json;
+global using AutoFixture;
+global using AutoFixture.Xunit2;
+global using CovidVaccineSchedulesQueryApi.Infra.Caching.Cache;
+global using CovidVaccineSchedulesQueryApi.Infra.Caching.Extensions;
+global using CovidVaccineSchedulesQueryApi.Infra.Caching.Test.Models;
+global using FluentAssertions;
+global using Moq;
+global using StackExchange.Redis;
+global using Xunit;

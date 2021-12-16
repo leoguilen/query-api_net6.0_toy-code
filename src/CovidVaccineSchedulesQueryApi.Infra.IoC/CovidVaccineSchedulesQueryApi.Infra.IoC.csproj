@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="5.0.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="5.0.9" />
+    <PackageReference Include="Roslynator.Analyzers" Version="3.2.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CovidVaccineSchedulesQueryApi.Core\CovidVaccineSchedulesQueryApi.Core.csproj" />
+    <ProjectReference Include="..\CovidVaccineSchedulesQueryApi.Infra.Caching\CovidVaccineSchedulesQueryApi.Infra.Caching.csproj" />
+    <ProjectReference Include="..\CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb\CovidVaccineSchedulesQueryApi.Infra.Data.MongoDb.csproj" />
+    <ProjectReference Include="..\CovidVaccineSchedulesQueryApi.Infra.Logging\CovidVaccineSchedulesQueryApi.Infra.Logging.csproj" />
+  </ItemGroup>
+</Project>

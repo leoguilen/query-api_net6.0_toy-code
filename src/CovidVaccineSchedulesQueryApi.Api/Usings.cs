@@ -1,0 +1,20 @@
+﻿global using System.Diagnostics;
+global using System.Diagnostics.CodeAnalysis;
+global using System.Reflection;
+global using CovidVaccineSchedulesQueryApi.Api.Configurations;
+global using CovidVaccineSchedulesQueryApi.Api.Constants;
+global using CovidVaccineSchedulesQueryApi.Api.Extensions;
+global using CovidVaccineSchedulesQueryApi.Api.Filters;
+global using CovidVaccineSchedulesQueryApi.Core.Abstractions.Infrastructure;
+global using CovidVaccineSchedulesQueryApi.Infra.IoC.DependencyInjection;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.ApiExplorer;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using Microsoft.Extensions.Diagnostics.HealthChecks;
+global using Microsoft.Extensions.Options;
+global using Microsoft.OpenApi.Any;
+global using Microsoft.OpenApi.Models;
+global using Swashbuckle.AspNetCore.Filters;
+global using Swashbuckle.AspNetCore.SwaggerGen;
+
